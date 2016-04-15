@@ -2,6 +2,8 @@
  *    Common
  */
 
+$font-stack: SFFourche;
+
 .header-fullscreen {
     position: relative;
     width: 100%;
@@ -277,6 +279,7 @@
         text-transform: uppercase;
 
         h1 {
+            font-family: $font-stack;
             margin-bottom: 0;
             &.clip{
                 @media (max-width: 767px) {
