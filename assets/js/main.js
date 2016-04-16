@@ -431,8 +431,8 @@ $(document).ready(function(){
     // When the window has finished loading create our google map below
     google.maps.event.addDomListener(window, 'load', init);
 
-    var mkr = new google.maps.LatLng(40.6700, -74.2000);
-    var cntr = (isMobile) ? mkr : new google.maps.LatLng(40.6700, -73.9400);
+    var mkr = new google.maps.LatLng(50.036385, -125.283387);
+    var cntr = (isMobile) ? mkr : new google.maps.LatLng(50.036385, -125.0000); 
 
     function init() {
         // Basic options for a simple Google Map
@@ -442,7 +442,7 @@ $(document).ready(function(){
             zoom: 11,
             scrollwheel: false,
             // The latitude and longitude to center the map (always required)
-            center: cntr, // New York
+            center: cntr, 
 
             // How you would like to style the map.
             // This is where you would paste any style found on Snazzy Maps.
@@ -656,7 +656,7 @@ $(document).ready(function(){
         var marker = new google.maps.Marker({
             position: mkr,
             map: map,
-            title: 'Snazzy!'
+            title: 'Angler\'s House!'
         });
     }
 
