@@ -112,8 +112,6 @@ jQuery(document).ready(function(){
     });
 });
 
-
-
 /*===================================
 	FixedTop Navigation
  ===================================*/
@@ -140,8 +138,6 @@ jQuery(document).ready(function(){
 
 })();
 
-
-
 /*===================================
     On-page navigation smooth scroll
  ===================================*/
@@ -156,8 +152,6 @@ $(document).ready(function(){
     });
 
 });
-
-
 
 /*===================================
 	portfolio
@@ -182,12 +176,9 @@ $(window).load(function () {
 
 });
 
-
-
 /*===================================
     portfolio filter set active class    
  ===================================*/
-
 
  $('.portfolio-filter li').click(function (event) {
     $(this).siblings('.active').removeClass('active');
@@ -195,12 +186,9 @@ $(window).load(function () {
     event.preventDefault();
 });
 
-
-
 /*===================================
     portfolio masonry
  ===================================*/
-
 
  $(window).load( function() {
 
@@ -228,7 +216,6 @@ $(window).load(function () {
     }
 
 });
-
 
 /*===================================
     portfolio individual gallery
@@ -328,57 +315,6 @@ setSectionHeight();
 $(window).on('resize', function(){
     setSectionHeight();
 });
-
-
-
-/*===================================
-    Video Player
- ===================================*/
-
-
-/*
- * @author       Rob W (http://stackoverflow.com/a/7513356/938089
- * @description  Executes function on a framed YouTube video (see previous link)
- *               For a full list of possible functions, see:
- *               http://code.google.com/apis/youtube/js_api_reference.html
- * @param String frame_id The id of (the div containing) the frame
- * @param String func     Desired function to call, eg. "playVideo"
- * @param Array  args     (optional) List of arguments to pass to function func*/
- function callPlayer(frame_id, func, args) {
-    if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
-    var iframe = document.getElementById(frame_id);
-    if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
-        iframe = iframe.getElementsByTagName('iframe')[0];
-    }
-    if (iframe) {
-        // Frame exists,
-        iframe.contentWindow.postMessage(JSON.stringify({
-            "event": "command",
-            "func": func,
-            "args": args || [],
-            "id": frame_id
-        }), "*");
-    }
-}
-
-
-$(document).ready(function(){
-    $("#playVideoSmall").click(function(e){
-        e.preventDefault();
-        callPlayer("ytPlayerSmall","playVideo");
-        $("#video-small").hide();
-        $("#video-small-container").fadeIn();
-    });
-
-    $("#playVideo").click(function(e){
-        e.preventDefault();
-        callPlayer("ytPlayer","playVideo");
-        $("#video").hide();
-        $("#video-container").fadeIn();
-    });
-
-});
-
 
 /*===================================
     Progressbar animation
@@ -644,26 +580,6 @@ $(document).ready(function(){
 
 })();
 
-/*===================================
-    Countdown Coming Soon
- ===================================*/
-
-$(document).ready(function(){
-    if($(".container-countdown").length == 0) return;
-
-    $('.container-countdown').countdown({
-        date: "December 15, 2015 00:00:00",
-        render: function(data) {
-            var el = $(this.el);
-            el.empty()
-                .append("<div class='countdown-box'><span class='counter'>" + this.leadingZeros(data.days, 2) + "</span><h6>Days</h6></div>")
-                .append("<div class='countdown-box'><span class='counter'>" + this.leadingZeros(data.hours, 2) + "</span><h6>Hours</h6></div>")
-                .append("<div class='countdown-box'><span class='counter'>" + this.leadingZeros(data.min, 2) + "</span><h6>Minutes</h6></div>")
-                .append("<div class='countdown-box'><span class='counter'>" + this.leadingZeros(data.sec, 2) + "</span><h6>Seconds</h6></div>");
-        }
-    });
-});
-
 
 /*===================================
     Lightbox gallery    
@@ -905,67 +821,6 @@ $(window).load(function () {
     
 })();
 
-
-
-/*===================================
-    Youtube video background
- ===================================*/
-
-(function(){
-
-    if(!$('#videoBackground').length) return;
-    $("#videoBackground").mb_YTPlayer();
-     
-    $('#video-play').click(function(event) {
-        event.preventDefault();
-        if ($(this).hasClass('fa-play')) {
-            $('#videoBackground').playYTP();
-        } else {
-            $('#videoBackground').pauseYTP();
-        }
-        $(this).toggleClass('fa-play fa-pause');
-        return false;
-    });
-
-    $('#video-volume').click(function(event) {
-        event.preventDefault();
-        $('#videoBackground').toggleVolume();
-        $(this).toggleClass('fa-volume-off fa-volume-up');
-        return false;
-    });
-})();
-
-
-
-/*===================================
-    Fun Facts
- ===================================*/
-
-
-(function () {
-    if(!$('#funfacts').length) return;
-    var inview = new Waypoint.Inview({
-        element: $('#funfacts')[0],
-        enter: function (direction) {
-            $('.fact-number').each(function () {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 3000,
-                    easing: 'swing',
-                    step: function (now) {
-                        $(this).text(Math.ceil(now));
-                    }
-                });
-            });
-            this.destroy();
-        }
-    });
-
-})();
-
-
-
 /*=====================================================
     Instagram Feed
 ========================================================*/
@@ -1040,59 +895,6 @@ $(document).ready(function(){
 
 /* end dot nav */
 });
-
-
-
-
-
-/*=====================================================
-    Particle Background
-========================================================*/
-
-(function(){
-
-    if($("#particles-js").length == 0) return;
-
-    particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":1,"color":"#ffffff"},"polygon":{"nb_sides":8},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.05524033491425909,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":2.5,"direction":"none","random":false,"straight":false,"out_mode":"bounce","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":200,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
-
-})();
-
-
-/*=====================================================
-    Fluid Particles
-========================================================*/
-
-function initFluidParticles() {
-        var $particlsA = $("#particles");
-        if ($particlsA.length) {
-            $particlsA.particleground({
-                minSpeedX: 0.6,
-                minSpeedY: 0.6,
-                dotColor: '#ffffff',
-                lineColor: '#ffffff',
-                density: 6000,
-                particleRadius: 2, // curvedLines: true,
-                parallaxMultiplier: 5.2,
-                proximity: 0
-            });
-        }
-    }
-initFluidParticles();
-
-
-/*=====================================================
-    Header Owl carousel
-========================================================*/
-(function(){
-    if(!$('#owl-hs-slider-zoom').length) return;
-    $("#owl-hs-slider-zoom").owlCarousel({
-        autoPlay : true,
-        stopOnHover : false,
-        singleItem: true,
-        pagination: false,
-        transitionStyle : 'fadeUp'
-    });
-})();
 
 
 
@@ -1300,70 +1102,6 @@ jQuery(document).ready(function($){
      
     });
 })();
-    
-
-
-
-
-
-/*------------------------------------------
- Subscribe form ajax
- ------------------------------------------*/
-
-
-$('#subscription-form').submit(function(e) {
-
-    e.preventDefault();
-    var $form           = $('#subscription-form');
-    var submit          = $('#subscribe-button');
-    var ajaxResponse    = $('#subscription-response');
-    var email           = $('#subscriber-email').val();
-
-    $.ajax({
-        type: 'POST',
-        url: 'php/subscribe.php',
-        dataType: 'json',
-        data: {
-            email: email
-        },
-        cache: false,
-        beforeSend: function(result) {
-            submit.html("Working...");
-        },
-        success: function(result) {
-            if(result.sendstatus == 1) {
-                ajaxResponse.html(result.message);
-                $form.fadeOut(500);
-            } else {
-                ajaxResponse.html(result.message);
-                submit.html('<i class="ion-heart"></i> Get it');
-            }
-        },
-        error: function(){
-            submit.html('<i class="ion-heart"></i> Get it');
-        }
-    });
-
-});
-
-$(document).ready(function() {
-    if($("#owl-testimonial").length){
-        $("#owl-testimonial").owlCarousel({
-            autoPlay: 3000,
-            stopOnHover: true,
-            pagination: false,
-            navigation: true,
-            navigationText: false,
-            paginationSpeed : 1000,
-            goToFirstSpeed : 2000,
-            singleItem : true,
-            autoHeight : true,
-            transitionStyle:"fade"
-        });
-    }
-});
-
-
 
 // contact form handling
 $(document).ready(function () {
