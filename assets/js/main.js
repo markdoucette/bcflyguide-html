@@ -145,26 +145,8 @@ jQuery(document).ready(function(){
 /*===================================
     On-page navigation smooth scroll
  ===================================*/
-
+/* Removed Scroll effect */
 $(document).ready(function(){
-
-    $('.menuzord-menu a[href*=#]:not([href=#]), .onPageNav').click(function() {
-       
-        if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                $(".navbar-collapse.collapse.in").removeClass("in");
-                $('html,body').animate({
-                    scrollTop: target.offset().top - 55
-                }, 1000, function(){
-                  
-                });
-                return false;
-            }
-        }
-    });
-
 
     $("#toggelSearch").click(function(e){
         e.preventDefault();
